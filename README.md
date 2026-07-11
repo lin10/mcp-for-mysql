@@ -1,2 +1,2 @@
-# Zero
-Zero，零即所有，一个基于Java的开源系统
+# mcp-for-database
+mcp-for-database，一个用于操作数据库的本地MCP
