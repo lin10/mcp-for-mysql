@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mysql-production": {
+      "command": "npx",
+      "args": ["mcp-for-mysql"],
+      "env": {
+        "MYSQL_HOST": "prod-db.example.com",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "production_user",
+        "MYSQL_PASS": "production_password",
+        "MYSQL_DB": "production_db",
+        "MYSQL_MODE": "readonly"
+      }
+    }
+  }
+}

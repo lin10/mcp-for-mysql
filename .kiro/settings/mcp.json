@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "node",
+      "args": [
+        "e:\\Code\\mcp-for-database\\dist\\index.js"
+      ],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "root",
+        "MYSQL_PASS": "123456",
+        "MYSQL_DB": "user",
+        "MYSQL_MODE": "readwrite",
+        "MYSQL_ALLOW_DDL": "true"
+      },
+      "autoApprove": [
+        "mysql_query",
+        "list_databases",
+        "list_tables",
+        "describe_table"
+      ]
+    }
+  }
+}

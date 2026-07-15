@@ -1,0 +1,51 @@
+{
+  "name": "mcp-for-mysql",
+  "version": "1.0.0",
+  "description": "Native MySQL MCP server - Zero external SDK dependencies",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-for-mysql": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "mysql",
+    "database",
+    "model-context-protocol",
+    "ai",
+    "assistant",
+    "native",
+    "zero-dependencies"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/mcp-for-mysql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/mcp-for-mysql/issues"
+  },
+  "homepage": "https://github.com/your-username/mcp-for-mysql#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "mysql2": "^3.11.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

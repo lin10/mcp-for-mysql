@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "npx",
+      "args": ["mcp-for-mysql"],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "readwrite_user",
+        "MYSQL_PASS": "readwrite_password",
+        "MYSQL_DB": "my_database",
+        "MYSQL_MODE": "readwrite"
+      }
+    }
+  }
+}

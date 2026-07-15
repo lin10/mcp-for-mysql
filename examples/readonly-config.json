@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "mysql": {
+      "command": "npx",
+      "args": ["mcp-for-mysql"],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "readonly_user",
+        "MYSQL_PASS": "readonly_password",
+        "MYSQL_MODE": "readonly"
+      }
+    }
+  }
+}
