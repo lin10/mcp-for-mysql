@@ -206,12 +206,27 @@ class MySQLMCPServer {
       const { sql, params = [] } = args;
       const upperSQL = sql.trim().toUpperCase();
 
-      // Check write operations in readonly mode
+      // Check write operations in readonly mode (DML only)
       if (this.config.mode === "readonly") {
-        const writeKeywords = ["INSERT", "UPDATE", "DELETE", "CREATE", "ALTER", "DROP", "TRUNCATE", "RENAME"];
-        if (writeKeywords.some(keyword => upperSQL.startsWith(keyword))) {
+        const dmlKeywords = ["INSERT", "UPDATE", "DELETE"];
+        if (dmlKeywords.some(keyword => upperSQL.startsWith(keyword))) {
           throw new Error(
-            "Write operations are not allowed in readonly mode. Set MYSQL_MODE=readwrite to enable."
+            "DML operations are not allowed in readonly mode. Set MYSQL_MODE=readwrite to enable."
+          );
+        }
+      }
+
+      // Check DDL operations (requires separate permission)
+      const ddlKeywords = ["CREATE", "ALTER", "DROP", "TRUNCATE", "RENAME"];
+      if (ddlKeywords.some(keyword => upperSQL.startsWith(keyword))) {
+        if (!this.config.allowDDL) {
+          throw new Error(
+            "DDL operations are not allowed. Set MYSQL_ALLOW_DDL=true to enable."
+          );
+        }
+        if (this.config.mode === "readonly") {
+          throw new Error(
+            "DDL operations require readwrite mode. Set MYSQL_MODE=readwrite."
           );
         }
       }

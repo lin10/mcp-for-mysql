@@ -97,9 +97,24 @@ execute_ddl("DROP TABLE test")
 
 ## Modes
 
-- **readonly** (default): SELECT, SHOW, DESCRIBE only
-- **readwrite**: All operations including INSERT, UPDATE, DELETE
-- **DDL**: Requires both `MYSQL_MODE=readwrite` AND `MYSQL_ALLOW_DDL=true`
+| Mode | DML (INSERT/UPDATE/DELETE) | DDL (CREATE/ALTER/DROP/TRUNCATE/RENAME) |
+|------|---------------------------|----------------------------------------|
+| **readonly** | ❌ 禁止 | ❌ 禁止 |
+| **readwrite** | ✅ 允许 | ❌ 禁止（需额外设置 `MYSQL_ALLOW_DDL=true`） |
+| **readwrite + allowDDL** | ✅ 允许 | ✅ 允许 |
+
+**权限配置示例：**
+
+```json
+// 只读模式 - 只能查询
+{ "MYSQL_MODE": "readonly" }
+
+// 读写模式 - 可查询和修改数据
+{ "MYSQL_MODE": "readwrite" }
+
+// 完全权限 - 可查询、修改数据、执行 DDL
+{ "MYSQL_MODE": "readwrite", "MYSQL_ALLOW_DDL": "true" }
+```
 
 ## License
 
